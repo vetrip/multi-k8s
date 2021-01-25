@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+      "target": "http://localhost:8080/employees-service",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }
