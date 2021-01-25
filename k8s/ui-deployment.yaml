@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employees-ui-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+      app: employees-ui
+    template: 
+      metadata: 
+        labels:
+          app: employees-ui
+      spec:
+        containers:
+          - image: vetrip/employees-ui
+            name: employees-ui
+            ports:
+              - containerPort: 3100
+
