@@ -7,11 +7,11 @@ metadata:
 spec:
   storageClassName: standard      # Storage class. A PV Claim requesting the same storageClass can be bound to this volume. 
   capacity:
-    storage: 250Mi
+    storage: 500Mi
   accessModes:
     - ReadWriteOnce
-  hostPath:                       # hostPath PersistentVolume is used for development and testing. It uses a file/directory on the Node to emulate network-attached storage
-    path: "/Users/vetri/persistent-volume"
+#hostPath:                       # hostPath PersistentVolume is used for development and testing. It uses a file/directory on the Node to emulate network-attached storage
+ #   path: "/Users/vetri/persistent-volume"
 
 ---
 apiVersion: v1
@@ -24,4 +24,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 500Mi
