@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employees-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: employees-api
+  template: 
+    metadata: 
+      labels:
+        app: employees-api
+    spec:
+      containers:
+        - image: vetrip/employees-api
+          name: employees-api
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-db-secret
+                  key: SPRING_DATASOURCE_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-db-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-db-secret
+                  key: SPRING_DATASOURCE_URL

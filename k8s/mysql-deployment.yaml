@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels: 
+        app: mysql
+    spec:
+      containers:
+        - image: mysql:8.0
+          name: mysql
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name:  mysql-persistent-volume
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_DATABASE
+              value: app
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-db-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+      volumes:
+        - name: mysql-persistent-volume
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+
