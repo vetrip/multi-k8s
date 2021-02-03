@@ -16,5 +16,5 @@ spec:
         - image: vetrip/employees-ui:3.0.0
           name: employees-ui
           ports:
-            - containerPort: 3100
+            - containerPort: 80
 
