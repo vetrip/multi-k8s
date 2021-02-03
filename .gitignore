@@ -1,3 +1,3 @@
-ui/package-lock.json
-ui/src/assets/.gitkeep
-api/target/*
+employees-ui/package-lock.json
+employees-ui/src/assets/.gitkeep
+employees-api/target/*
