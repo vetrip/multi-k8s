@@ -14,9 +14,8 @@ RUN npm install --force
 COPY . .
 
 # build the application
-RUN npm build
+RUN npm run build
 
-FROM nginx
-EXPOSE 3100
+FROM nginx:1.18-alpine
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist/employees-ui /usr/share/nginx/html

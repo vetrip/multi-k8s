@@ -1,0 +1,33 @@
+version: '3'
+services:
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+  employees-api:
+    depends_on: 
+      - mysql-db
+    build:
+      dockerfile: Dockerfile
+      context: ./employees-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_USER=root
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/app?allowPublicKeyRetrieval=true&useSSL=false
+  employees-ui:
+    stdin_open: true
+    ports:
+      - "4200:80"
+    depends_on: 
+      - employees-api
+    build:
+      dockerfile: Dockerfile
+      context: ./employees-ui
+
