@@ -13,7 +13,7 @@ spec:
         app: employees-api
     spec:
       containers:
-        - image: vetrip/employees-api:1.0.0
+        - image: vetrip/employees-api:2.0.0
           name: employees-api
           ports:
             - containerPort: 8080
