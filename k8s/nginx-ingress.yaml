@@ -16,7 +16,7 @@ spec:
               serviceName: ui-cluster-ip-service
               servicePort: 80
           - pathType: Prefix
-            path: /api
+            path: /employees-service
             backend:
               serviceName: api-cluster-ip-service
               servicePort: 8080

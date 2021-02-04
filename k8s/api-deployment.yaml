@@ -15,6 +15,7 @@ spec:
       containers:
         - image: vetrip/employees-api:3.0.0
           name: employees-api
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:

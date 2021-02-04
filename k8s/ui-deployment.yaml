@@ -17,4 +17,5 @@ spec:
           name: employees-ui
           ports:
             - containerPort: 80
+          imagePullPolicy: Always
 
