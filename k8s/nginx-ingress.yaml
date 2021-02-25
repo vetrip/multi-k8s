@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: nginx-ingress
+  name: aws-alb-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
     #nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: "35.184.243.253.xip.io"
-      http:
+    - http:
         paths:
           - pathType: Prefix
             path: /
