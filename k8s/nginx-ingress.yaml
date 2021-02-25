@@ -12,13 +12,14 @@ spec:
     - http:
         paths:
           - pathType: Prefix
-            path: /*
-            backend:
-              serviceName: ui-cluster-ip-service
-              servicePort: 80
-          - pathType: Prefix
             path: /api/*
             backend:
               serviceName: api-cluster-ip-service
               servicePort: 8080
+          - pathType: Prefix
+            path: /*
+            backend:
+              serviceName: ui-cluster-ip-service
+              servicePort: 80
+
 
